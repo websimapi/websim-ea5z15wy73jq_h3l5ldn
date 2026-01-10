@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smash Web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        
+        <!-- UI Overlays -->
+        <div id="ui-layer">
+            <!-- Main Menu -->
+            <div id="main-menu" class="screen active">
+                <h1>SMASH WEB</h1>
+                <div class="menu-buttons">
+                    <button onclick="window.game.openCharSelect('smash')">SMASH</button>
+                    <button onclick="window.game.startTutorial()">TUTORIAL</button>
+                    <button onclick="window.game.startClassic()">CLASSIC</button>
+                    <button onclick="window.game.startAdventure()">ADVENTURE</button>
+                    <button onclick="window.game.openCharSelect('hp')">HP MODE</button>
+                </div>
+            </div>
+
+            <!-- Character Selection -->
+            <div id="char-select" class="screen">
+                <h2>Choose Your Fighter</h2>
+
+                <!-- Side arrows for paging extra characters (shown only for Smash/HP selection) -->
+                <button id="char-prev" class="side-arrow left hidden" aria-label="Previous">◀</button>
+                <button id="char-next" class="side-arrow right hidden" aria-label="Next">▶</button>
+
+                <div id="char-grid" class="char-grid">
+                    <!-- Dynamic Generation -->
+                </div>
+                <button class="back-btn" onclick="window.game.setScreen('main-menu')">Back</button>
+            </div>
+
+            <!-- In-Game HUD -->
+            <div id="hud" class="hud hidden">
+                <div class="fighter-stats p1">
+                    <div class="name">P1</div>
+                    <div class="percent">0%</div>
+                    <div class="stocks">O O O</div>
+                </div>
+                <div class="fighter-stats p2">
+                    <div class="name">CPU</div>
+                    <div class="percent">0%</div>
+                    <div class="stocks">O O O</div>
+                </div>
+                <div id="tutorial-box" class="hidden">
+                    <p id="tutorial-text"></p>
+                </div>
+            </div>
+
+            <!-- Mobile Controls -->
+            <div id="mobile-controls" class="hidden">
+                <div id="joystick-zone"></div>
+                <div class="action-buttons">
+                    <button id="btn-jump" class="ctrl-btn" aria-label="Jump">↑</button>
+                    <button id="btn-attack" class="ctrl-btn fight-btn" aria-label="Attack">J</button>
+                    <button id="btn-special" class="ctrl-btn fight-btn" aria-label="Special">K</button>
+                    <button id="btn-smash" class="ctrl-btn fight-btn" aria-label="Smash">S</button>
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="game-over" class="screen">
+                <h2 id="result-text">VICTORY!</h2>
+                <button onclick="window.game.setScreen('main-menu')">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "nipplejs": "https://esm.sh/nipplejs@0.10.1"
+      }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
